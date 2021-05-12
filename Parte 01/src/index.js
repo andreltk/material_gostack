@@ -11,6 +11,15 @@ const express = require('express');
  */
 const app = express();
 
+//Permite a conexão com o frontend
+app.use(cors());
+/*
+app.use(cors({
+    origin: 'http://localhost:8080'
+}));
+
+*/
+
 /*
  * Nesse ponto atual, simplesmente acessar o endereço não 
  * retorna nada, pois a aplicação não verifica o que está sendo
@@ -18,45 +27,45 @@ const app = express();
  * Para isso usa-se um método do Express, o .get 
  */
 
- /* 
-  * O primero parâmetro é o endereço a ser observado
-  * como por exemplo '/usuarios'
-  * Já o segundo é uma função (foi usado uma 'arrow function')
-  * onde o primeiro parâmetro dessa função é request (requisição)
-  * e o segundo, response (resposta) 
-  */
+/* 
+ * O primero parâmetro é o endereço a ser observado
+ * como por exemplo '/usuarios'
+ * Já o segundo é uma função (foi usado uma 'arrow function')
+ * onde o primeiro parâmetro dessa função é request (requisição)
+ * e o segundo, response (resposta) 
+ */
 
- // A URL monitorada pode ser somente '/' que monitora todos as rotas
-app.get('/home',(request, response) =>{
- /* 
-  * Essa resposta gerada pode ser várias coisas permitidas
-  * (texto, arquivos, JSON, etc...)
-  * e é enviada para o front-endpelo objeto response 
-  */
-    // É definido um retorno dessa rota ao navegador
-    // response.send retorna texto
-    return response.send("Olá Mundinho!\n");
-    
-});
-
-//Um segundo exemplo
-app.get('/users',(request, response) =>{
+// A URL monitorada pode ser somente '/' que monitora todos as rotas
+app.get('/home', (request, response) => {
     /* 
      * Essa resposta gerada pode ser várias coisas permitidas
      * (texto, arquivos, JSON, etc...)
      * e é enviada para o front-endpelo objeto response 
      */
-       // É definido um retorno dessa rota ao navegador
-       // response.send retorna texto
-       return response.json({
-           message : "Só tem eu aqui",
-           name : "André Luiz",
-           age : 21,
-           mentaWellness : "A beira do surto"
-       });
-       
-   });
-   
+    // É definido um retorno dessa rota ao navegador
+    // response.send retorna texto
+    return response.send("Olá Mundinho!\n");
+
+});
+
+//Um segundo exemplo
+app.get('/users', (request, response) => {
+    /* 
+     * Essa resposta gerada pode ser várias coisas permitidas
+     * (texto, arquivos, JSON, etc...)
+     * e é enviada para o front-endpelo objeto response 
+     */
+    // É definido um retorno dessa rota ao navegador
+    // response.send retorna texto
+    return response.json({
+        message: "Só tem eu aqui",
+        name: "André Luiz",
+        age: 21,
+        mentaWellness: "A beira do surto"
+    });
+
+});
+
 
 /*
  * Permite que o 'escute' pela porta 
@@ -70,7 +79,7 @@ app.listen(6000, () => {
     console.log("Programa Iniciado com Sucesso ✅");
 });
 
-/* 
+/*
   * Após isso é necessário rodar o programa com
-  * $ node nome_programa.js 
+  * $ node nome_programa.js
   */

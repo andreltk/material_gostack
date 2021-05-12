@@ -1,10 +1,17 @@
 const { request, response } = require('express');
 const express = require('express');
 
+// Importa CORS
+const cors = require('cors');
+
 //Necesário instalar pacote uuid
 const uuid = require('uuid')
 
 const app = express();
+
+app.use(cors({
+    origin: 'http://localhost:8080'
+}));
 
 app.use(express.json());
 
